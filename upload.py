@@ -17,7 +17,7 @@ def main():
 	# For some reason, when we download documents via the URL, the service does not process them correctly.
 	pdf = open(DOCUMENT_PATH, "rb")
 	obj = client.documents.upload(pdf)
-	for x in range(0,20):
+	for x in range(0,45):
 		try:
 			print("beginning an attempt")
 			obj.full_text
@@ -26,6 +26,8 @@ def main():
 			pass
 		else:
 			print("Processing is finished")
+			print("Proceeding to delete PDF")
+			obj.delete()
 			break
 
 if __name__ == "__main__":
