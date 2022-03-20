@@ -1,6 +1,9 @@
-import os 
+import os
+from time import sleep
 
-from documentcloud import DocumentCloud
+import requests
+import documentcloud
+
 
 # We will create a Python script that uploads a document into documentcloud, and then monitors to see that the document has been uploaded successfully.
 # Once it has been uploaded successfully, we can proceed to process the docment with the search term.
@@ -10,7 +13,7 @@ DOCUMENT_CLOUD_PASSWORD = os.getenv('DOCUMENT_CLOUD_PASSWORD')
 DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
 
 def main(): 
-	client = DocumentCloud(DOCUMENT_CLOUD_USERNAME, DOCUMENT_CLOUD_PASSWORD)
+	client = documentcloud.DocumentCloud(DOCUMENT_CLOUD_USERNAME, DOCUMENT_CLOUD_PASSWORD)
 	# For some reason, when we download documents via the URL, the service does not process them correctly.
 	pdf = open(DOCUMENT_PATH, "rb")
 	obj = client.documents.upload(pdf)
