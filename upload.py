@@ -10,6 +10,23 @@ import documentcloud
 DOCUMENT_CLOUD_USERNAME = os.getenv('DOCUMENT_CLOUD_USERNAME')
 DOCUMENT_CLOUD_PASSWORD = os.getenv('DOCUMENT_CLOUD_PASSWORD')
 DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
+DOCUMENT_URL = os.getenv('DOCUMENT_URL')
+SEARCH_TERM = "page"
+
+def send_alert(search_term, document_url):
+	"""
+	This function is triggered whenever our search term is found. 
+	When triggered, this function sends an email using Document 
+	Cloud's email service.
+	
+	search_term: String, the searched term inside the document.
+	document_name: The name of the document that has been searched.
+	document_url: The URL from which the document was downloaded.
+	
+	return: None
+	"""
+	print("Alert has been triggered: ", search_term, document_url)
+
 
 def main(): 
 	client = documentcloud.DocumentCloud(DOCUMENT_CLOUD_USERNAME, DOCUMENT_CLOUD_PASSWORD)
@@ -26,8 +43,16 @@ def main():
 		else:
 			print("Processing is finished")
 			print("Proceeding to delete PDF")
-			obj.delete()
-			break
+			break	
+	
+	# Examine the full text of the PDF to see if our term can be found. 
+	# If so, send an email.
+	if SEARCH_TERM.upper() in obj.full_text.upper()
+		send_alert(SEARCH_TERM, DOCUMENT_URL)
+
+	# Finally, delete our PDF which has been stored Document Cloud.
+	obj.delete()
+	
 
 if __name__ == "__main__":
 	main()
