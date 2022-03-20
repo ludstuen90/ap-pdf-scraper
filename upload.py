@@ -14,7 +14,9 @@ def main():
 	print("helloworld") 
 	print("We have username: ", DOCUMENT_CLOUD_USERNAME)
 	print("WE HAVE URL: ", DOCUMENT_URL)
-	# client = DocumentCloud(
+	client = DocumentCloud(DOCUMENT_CLOUD_USERNAME, DOCUMENT_CLOUD_PASSWORD)
+	obj = client.documents.upload(DOCUMENT_URL)
+
 
 if __name__ == "__main__":
 	main()
