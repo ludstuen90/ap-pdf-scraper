@@ -47,7 +47,7 @@ def main():
 	
 	# Examine the full text of the PDF to see if our term can be found. 
 	# If so, send an email.
-	if SEARCH_TERM.upper() in obj.full_text.upper()
+	if SEARCH_TERM.upper() in obj.full_text.upper():
 		send_alert(SEARCH_TERM, DOCUMENT_URL)
 
 	# Finally, delete our PDF which has been stored Document Cloud.
