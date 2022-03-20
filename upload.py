@@ -13,7 +13,7 @@ DOCUMENT_URL = os.getenv('PDF_URL')
 def main(): 
 	print("helloworld") 
 	print("We have username: ", DOCUMENT_CLOUD_USERNAME)
-	print("WE HAVE URL: ", DOCMENT_URL)
+	print("WE HAVE URL: ", DOCUMENT_URL)
 	# client = DocumentCloud(
 
 if __name__ == "__main__":
