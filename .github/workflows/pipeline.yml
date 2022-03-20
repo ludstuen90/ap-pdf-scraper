@@ -34,14 +34,14 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
 
+      - name: Download a PDF using URL 
+        run: curl "$PDF_URL" -o output.pdf
+
       - name: Execute Python Script
         run: python upload.py
 
-#      - name: Download a PDF using URL 
-#        run: curl "$PDF_URL" -o output.pdf
-
-      - name: Download 
-        run: echo  "$dev.DOCUMENT_CLOUD_USERNAME" 
+#      - name: Download 
+#        run: echo  "$dev.DOCUMENT_CLOUD_USERNAME" 
 #        run: |
 #          echo Add other actions to build,
 #          echo test, and deploy your project.
