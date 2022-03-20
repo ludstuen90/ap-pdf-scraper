@@ -14,6 +14,7 @@ on:
 
 env: 
   PDF_URL: http://hobokennj.iqm2.com/Citizens/FileOpen.aspx?Type=1&ID=1756
+  DOCUMENT_CLOUD_PASSWORD: ${{ secrets.dev.DOCUMENT_CLOUD_PASSWORD }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,7 +33,7 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
 
-      - name: Execute python Script
+      - name: Execute Python Script
         run: python upload.py
 
 #      - name: Download a PDF using URL 
