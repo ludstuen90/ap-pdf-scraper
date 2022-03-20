@@ -7,17 +7,24 @@ from documentcloud import DocumentCloud
 
 DOCUMENT_CLOUD_USERNAME = os.getenv('DOCUMENT_CLOUD_USERNAME')
 DOCUMENT_CLOUD_PASSWORD = os.getenv('DOCUMENT_CLOUD_PASSWORD')
-DOCUMENT_URL = os.getenv('PDF_URL')
+DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
 
 def main(): 
-	print("helloworld") 
-	print("We have username: ", DOCUMENT_CLOUD_USERNAME)
-	print("WE HAVE URL: ", DOCUMENT_URL)
 	client = DocumentCloud(DOCUMENT_CLOUD_USERNAME, DOCUMENT_CLOUD_PASSWORD)
 	# For some reason, when we download documents via the URL, the service does not process them correctly.
-	pdf_path = os.path.join(os.getcwd(), 'output.pdf')
-	pdf = open(pdf_path, "rb")
+	pdf = open(DOCUMENT_PATH, "rb")
 	obj = client.documents.upload(pdf)
+        for x in range(0,20):
+                try:
+                        print("beginning an attempt")
+                        obj.full_text
+                except (requests.exceptions.HTTPError, documentcloud.exceptions.DoesNotExistError)  as http_error:
+                        sleep(10) # wait 10 seconds before retrying
+                        pass
+                else:
+                        print("Processing is finished")
+                        break
+
 
 if __name__ == "__main__":
 	main()
