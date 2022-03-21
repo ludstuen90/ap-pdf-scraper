@@ -18,7 +18,6 @@ DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
 DOCUMENT_URL = os.getenv('DOCUMENT_URL')
 SEARCH_TERM = "page"
 
-
 def send_alert(search_term, document_url):
 	"""
 	This function is triggered whenever our search term is found. 
@@ -32,6 +31,7 @@ def send_alert(search_term, document_url):
 	return: None
 	"""
 	print("Alert has been triggered: ", search_term, document_url)
+
 
 def main(): 
 	client = documentcloud.DocumentCloud(DOCUMENT_CLOUD_USERNAME, DOCUMENT_CLOUD_PASSWORD)
@@ -47,7 +47,6 @@ def main():
 			pass
 		else:
 			print("Processing is finished")
-			print("Proceeding to delete PDF")
 			break	
 	
 	# Examine the full text of the PDF to see if our term can be found. 
