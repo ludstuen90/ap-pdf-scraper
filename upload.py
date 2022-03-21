@@ -64,5 +64,6 @@ def main():
 	print("just before alert, ", DC_USERNAME)	
 	Alert().send_mail("test email", "if this test email works, we have good news")
 
+
 if __name__ == "__main__":
 	main()
