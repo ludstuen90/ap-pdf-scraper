@@ -62,7 +62,7 @@ def main():
 #	# Finally, delete our PDF which has been stored Document Cloud.
 #	obj.delete()
 	print("just before alert, ", DC_USERNAME)	
-	Alert().lukas("hello")
+	Alert().send_mail(self, "test email", "if this test email works, we have good news")
 
 if __name__ == "__main__":
 	main()
