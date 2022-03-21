@@ -9,32 +9,15 @@ from documentcloud.addon import CronAddOn
 # We will create a Python script that uploads a document into documentcloud, and then monitors to see that the document has been uploaded successfully.
 # Once it has been uploaded successfully, we can proceed to process the docment with the search term.
 
-DOCUMENT_CLOUD_USERNAME = os.getenv('DOCUMENT_CLOUD_USERNAME')
-DOCUMENT_CLOUD_PASSWORD = os.getenv('DOCUMENT_CLOUD_PASSWORD')
 DC_USERNAME = os.getenv('DC_USERNAME')
 DC_PASSWORD = os.getenv('DC_PASSWORD')
 
-DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
+DOCUMENT_PATH = os.path.join(os.getcwd(), 'output.pdf')
 DOCUMENT_URL = os.getenv('DOCUMENT_URL')
 SEARCH_TERM = "page"
 
-def send_alert(search_term, document_url):
-	"""
-	This function is triggered whenever our search term is found. 
-	When triggered, this function sends an email using Document 
-	Cloud's email service.
-	
-	search_term: String, the searched term inside the document.
-	document_name: The name of the document that has been searched.
-	document_url: The URL from which the document was downloaded.
-	
-	return: None
-	"""
-	print("Alert has been triggered: ", search_term, document_url)
-
-
 def main(): 
-	client = documentcloud.DocumentCloud(DOCUMENT_CLOUD_USERNAME, DOCUMENT_CLOUD_PASSWORD)
+	client = documentcloud.DocumentCloud(DC_USERNAME, DC_PASSWORD)
 	# For some reason, when we download documents via the URL, the service does not process them correctly.
 	pdf = open(DOCUMENT_PATH, "rb")
 	obj = client.documents.upload(pdf)

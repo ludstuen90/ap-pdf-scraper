@@ -5,18 +5,18 @@ name: PDF Analyzer
 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ 1-pdf-importer ]
   schedule:
     - cron: "15 * * * *"
+  push:
+    branches:
+      - 'master'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env: 
   DOCUMENT_URL: http://hobokennj.iqm2.com/Citizens/FileOpen.aspx?Type=1&ID=1756
-  DOCUMENT_CLOUD_USERNAME: ${{ secrets.DOCUMENT_CLOUD_USERNAME }}
-  DOCUMENT_CLOUD_PASSWORD: ${{ secrets.DOCUMENT_CLOUD_PASSWORD }}
+  # As per MuckRock Documentation, Document Cloud username and password must be stored with this name https://github.com/MuckRock/documentcloud-alert-cron-addon 
   DC_USERNAME: ${{ secrets.DOCUMENT_CLOUD_USERNAME }}
   DC_PASSWORD: ${{ secrets.DOCUMENT_CLOUD_PASSWORD }}
 
@@ -37,8 +37,8 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
 
-#      - name: Download a PDF using URL 
-#        run: curl "$DOCUMENT_URL" -o output.pdf
+      - name: Download a PDF using URL 
+        run: curl "$DOCUMENT_URL" -o output.pdf
 
       - name: Execute Python Script
         run: python upload.py
