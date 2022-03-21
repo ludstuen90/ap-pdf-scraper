@@ -6,7 +6,6 @@ import documentcloud
 
 from documentcloud.addon import CronAddOn
 
-
 # We will create a Python script that uploads a document into documentcloud, and then monitors to see that the document has been uploaded successfully.
 # Once it has been uploaded successfully, we can proceed to process the docment with the search term.
 
