@@ -59,7 +59,7 @@ def main():
 #	# Finally, delete our PDF which has been stored Document Cloud.
 #	obj.delete()
 	print("just before alert, ", DC_USERNAME)	
-	CronAddOn().send_mail("TERM MATCHED",f"""Hi there, \n We're writing to let you know that the term {SEARCH_TERM} the following URL \n {DOCUMENT_URL} \n Thanks.""")
+	CronAddOn().send_mail("TERM MATCHED", f"""Hi there, \n We're writing to let you know that we've discovered the following match: \n\n TERM: {SEARCH_TERM} \n DOCUMENT URL:  {DOCUMENT_URL} \n\n Thanks.""")
 
 
 if __name__ == "__main__":
