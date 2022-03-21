@@ -18,9 +18,6 @@ DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
 DOCUMENT_URL = os.getenv('DOCUMENT_URL')
 SEARCH_TERM = "page"
 
-class Alert(CronAddOn):
-	def lukas(self, name): 
-		print("Hello")
 
 def send_alert(search_term, document_url):
 	"""
@@ -62,7 +59,7 @@ def main():
 #	# Finally, delete our PDF which has been stored Document Cloud.
 #	obj.delete()
 	print("just before alert, ", DC_USERNAME)	
-	Alert().send_mail("test email", "if this test email works, we have good news")
+	CronAddOn().send_mail("TERM DISCOVERED", "We're writing to let you know we found a matched term.")
 
 
 if __name__ == "__main__":
