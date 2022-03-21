@@ -4,14 +4,24 @@ from time import sleep
 import requests
 import documentcloud
 
+from documentcloud.addon import CronAddOn
+
+
 # We will create a Python script that uploads a document into documentcloud, and then monitors to see that the document has been uploaded successfully.
 # Once it has been uploaded successfully, we can proceed to process the docment with the search term.
 
 DOCUMENT_CLOUD_USERNAME = os.getenv('DOCUMENT_CLOUD_USERNAME')
 DOCUMENT_CLOUD_PASSWORD = os.getenv('DOCUMENT_CLOUD_PASSWORD')
+DC_USERNAME = os.getenv('DOCUMENT_CLOUD_USERNAME')
+DC_PASSWORD = os.getenv('DOCUMENT_CLOUD_PASSWORD')
+
 DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
 DOCUMENT_URL = os.getenv('DOCUMENT_URL')
 SEARCH_TERM = "page"
+
+class Alert(CronAddOn):
+	def lukas(self, name): 
+		print("Hello")
 
 def send_alert(search_term, document_url):
 	"""
@@ -26,7 +36,6 @@ def send_alert(search_term, document_url):
 	return: None
 	"""
 	print("Alert has been triggered: ", search_term, document_url)
-
 
 def main(): 
 	client = documentcloud.DocumentCloud(DOCUMENT_CLOUD_USERNAME, DOCUMENT_CLOUD_PASSWORD)
@@ -49,6 +58,7 @@ def main():
 	# If so, send an email.
 	if SEARCH_TERM.upper() in obj.full_text.upper():
 		send_alert(SEARCH_TERM, DOCUMENT_URL)
+		Alert().lukas("hello")
 
 	# Finally, delete our PDF which has been stored Document Cloud.
 	obj.delete()
