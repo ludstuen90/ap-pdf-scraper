@@ -19,6 +19,7 @@ DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
 DOCUMENT_URL = os.getenv('DOCUMENT_URL')
 SEARCH_TERM = "page"
 
+
 class Alert(CronAddOn):
 	def lukas(self, name): 
 		print("Hello")
