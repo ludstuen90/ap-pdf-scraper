@@ -11,8 +11,8 @@ from documentcloud.addon import CronAddOn
 
 DOCUMENT_CLOUD_USERNAME = os.getenv('DOCUMENT_CLOUD_USERNAME')
 DOCUMENT_CLOUD_PASSWORD = os.getenv('DOCUMENT_CLOUD_PASSWORD')
-DC_USERNAME = os.getenv('DOCUMENT_CLOUD_USERNAME')
-DC_PASSWORD = os.getenv('DOCUMENT_CLOUD_PASSWORD')
+DC_USERNAME = os.getenv('DC_USERNAME')
+DC_PASSWORD = os.getenv('DC_PASSWORD')
 
 DOCUMENT_PATH = os.path.join(os.getcwd(), 'agenda.pdf')
 DOCUMENT_URL = os.getenv('DOCUMENT_URL')
